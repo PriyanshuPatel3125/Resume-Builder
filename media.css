@@ -1,0 +1,498 @@
+@media screen and (max-width:1024px) {
+  .right-part {
+    display: none;
+    height: 100%;
+    padding: 1rem;
+    padding-bottom: 5rem;
+    overflow-x: auto;
+  }
+
+  .resume-header {
+    padding-top: 20px;
+  }
+
+  .left-part {
+    width: 100vw;
+  }
+
+  .nav {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 20px;
+  }
+
+  .nav-buttons {
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+  }
+
+  .main-buttons {
+    background-color: #ffffff;
+    border-top: 1px solid var(--border-color);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 110;
+    grid-template-columns: 1fr 1fr;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .p-item-header {
+    width: 90vw;
+  }
+
+  .main-section {
+    grid-template-columns: 1fr;
+    /* height: 27.5rem */
+  }
+
+  /* --- MOBILE VIEW TABS (FOR OPTIMAL MOBILE EXPERIENCE) --- */
+  .mobile-tabs {
+    display: none;
+    background-color: #ffffff;
+    border-top: 1px solid var(--border-color);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 110;
+    grid-template-columns: 1fr 1fr;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+  }
+
+  .mobile-tab-btn {
+    padding: 0.5rem;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+
+  .mobile-tab-btn.active {
+    color: var(--active-accent);
+    border-top: 3px solid var(--active-accent);
+    background-color: #faf5ff;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .nav {
+    width: 90vw;
+  }
+
+  .left-part {
+    padding: 10px 2rem 2rem 2rem;
+  }
+
+  .main-section {
+    grid-template-columns: 1fr;
+    /* height: 27.5rem; */
+  }
+}
+
+@media screen and (max-width: 451px) {
+  .nav {
+    width: 20rem;
+    margin-top: 0px;
+  }
+
+  .left-part {
+    padding: 10px;
+  }
+
+  .content {
+    padding: 25px 0px 0px 0px;
+  }
+
+  .row {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+  }
+
+  .setting {
+    margin-top: 10px;
+    gap: 0px;
+    padding: 20px 10px 10px 20px;
+  }
+
+  .header {
+    background-color: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    padding: 15px;
+  }
+
+  .resume-setting {
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  .templateSelect {
+    font-size: 12px;
+  }
+
+  .form-control {
+    height: 5.5vh;
+    width: 80%;
+    font-size: 0.75rem;
+  }
+
+  .personal-icons {
+    font-size: 14px;
+  }
+
+  .avatar img {
+    width: 85%;
+    height: 85%;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 85px;
+    height: 85px;
+    border: 2px solid var(--accent-indigo);
+  }
+
+  .form-group label {
+    font-size: 13px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    width: 100%;
+    padding: 9px 10px;
+    font-size: 13px;
+  }
+
+  .remove-btn {
+    width: max-content;
+    padding: 7px 8px;
+    font-size: 12px;
+  }
+
+  .profile-section label {
+    font-size: 15px;
+  }
+
+  .add-btn {
+    padding: 6px;
+    border: 3px dotted var(--accent-indigo);
+    font-size: 15px;
+  }
+
+  .add-btn1 {
+    padding: 6px;
+    border: 3px dotted var(--accent-indigo);
+    font-size: 15px;
+  }
+
+  /* .add-btn2 {
+    padding: 6px;
+    border: 3px dotted var(--accent-indigo);
+    font-size: 15px;
+  }
+
+  .add-btn3 {
+    padding: 6px;
+    border: 3px dotted var(--accent-indigo);
+    font-size: 15px;
+  } */
+
+  .top h3 {
+    font-size: 13px;
+  }
+
+  .remove {
+    font-size: 13px;
+  }
+
+  label {
+    font-size: 13px;
+  }
+
+  .logo-icon {
+    background-color: var(--accent-indigo);
+    width: 2rem;
+    height: 2rem;
+    font-size: 16px;
+  }
+
+  .logo-txt h1 {
+    font-size: 15px;
+    font-weight: 900;
+  }
+
+  .logo-txt p {
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+
+  .demo-data {
+    font-size: 12px;
+    width: 9rem;
+    height: 2rem;
+  }
+
+  .reset-data {
+    font-size: 12px;
+    width: 7rem;
+    height: 2rem;
+  }
+
+  .save-data {
+    font-size: 12px;
+    width: 7rem;
+    height: 2rem;
+  }
+
+  .load-data {
+    font-size: 12px;
+    width: 7rem;
+    height: 2rem;
+  }
+
+  .download-data {
+    font-size: 12px;
+    width: 9rem;
+    height: 2rem;
+  }
+
+  /* ...Resume Prive... */
+
+  .right-part {
+    width: 100vw;
+    padding: 10px 10px 10px 10px;
+  }
+
+  .resume-header {
+    margin: 0px;
+  }
+
+  .profile-img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+  }
+
+  .imgBorder {
+    width: 110px;
+    height: 110px;
+  }
+
+  .name {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 30px;
+  }
+
+  .job {
+    font-size: 15px;
+    color: var(--accent-indigo);
+  }
+
+  .summary-title {
+    font-size: 11px;
+  }
+
+  .summary-title i {
+    font-size: 13px;
+  }
+
+  .summary-description {
+    font-size: 12px;
+  }
+
+  .p-item-title {
+    font-size: 12px;
+    font-weight: 800;
+  }
+
+  .p-item-subtitle {
+    font-size: 12px;
+  }
+
+  .p-item-date {
+    font-weight: 100;
+    font-size: 11px;
+  }
+
+  .p-item-header {
+    width: 84vw;
+    align-items: baseline;
+  }
+
+  .p-item-desc {
+    margin-top: 10px;
+    font-size: 13px;
+  }
+
+  .btnLinks1 {
+    border: none;
+    width: 60px;
+  }
+
+  .btnLinks2 {
+    border: none;
+    width: 80px;
+  }
+
+  .project-links-container a {
+    text-decoration: none;
+    font-size: 9px;
+  }
+
+  .project-links-container {
+    display: flex;
+    gap: 3px;
+  }
+
+  .p-skills-list span {
+    font-size: 10px;
+    margin-right: 10px;
+    padding: 2px 9px 2px 9px;
+    border-radius: 5px;
+  }
+
+  .p-skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .left-button {
+    font-size: 12px;
+  }
+
+  .right-button {
+    font-size: 12px;
+  }
+
+  .main-section {
+    grid-template-columns: 1fr;
+    height: 68vh;
+  }
+}
+
+
+/* --- RESPONSIVE ADJUSTMENTS --- */
+@media (max-width: 1024px) {
+  .app-container {
+    grid-template-columns: 1fr;
+    height: calc(100vh - 120px);
+  }
+
+  .mobile-tabs {
+    display: grid;
+  }
+
+  .editor-panel {
+    display: block;
+    /* Active tab changes display in JS */
+    height: 100%;
+    padding-bottom: 5rem;
+  }
+
+  .right-part {
+    display: none;
+    /* Active tab changes display in JS */
+    height: 100%;
+    padding: 1rem;
+    /* padding-bottom: 5rem; */
+    overflow-x: auto;
+  }
+
+  .resume-container-wrapper {
+    transform: scale(0.85);
+    transform-origin: top left;
+  }
+}
+
+@media (max-width: 780px) {
+  header {
+    padding: 0.75rem 1rem;
+  }
+
+  .action-controls {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .resume-container-wrapper {
+    transform: scale(0.65);
+  }
+}
+
+@media (max-width: 480px) {
+
+  .resume-container-wrapper {
+    transform: scale(0.45);
+  }
+}
+
+
+@media print {
+
+  body,
+  html {
+    background-color: #ffffff !important;
+    background: #ffffff !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  header,
+  .editor-panel,
+  .mobile-tabs,
+  .action-controls {
+    display: none !important;
+  }
+
+  .right-part {
+    display: block !important;
+    background: #ffffff !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .resume-container-wrapper {
+    transform: none !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  #resumePreview {
+    box-shadow: none !important;
+    border: none !important;
+    padding: 12mm !important;
+    width: 210mm !important;
+    min-height: 297mm !important;
+    page-break-after: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Background and accents rendering correctly in PDFs */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}

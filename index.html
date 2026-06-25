@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume-Builder</title>
+  <!-- Style Sheet Link -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="media.css">
+
+  <!-- FontAwesome Icons for Premium Look -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    crossorigin="anonymous" />
+
+  <!-- Google Fonts for Modern Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- HTML2PDF library for instant browser-side PDF downloads -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+</head>
+
+<body>
+  <!-- Navigation part -->
+  <header class="header">
+    <div class="navbar">
+      <div class="nav">
+
+        <!-- Logo Creating -->
+        <div class="logo">
+          <div class="logo-icon"><i class="fa-solid fa-file-invoice"></i></div>
+          <div class="logo-txt">
+            <h1>Easy Resume Builder</h1>
+            <p>Build your professional resume instantly</p>
+          </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="nav-buttons">
+          <button class="demo-data">
+            <i class="fa-solid fa-magic"></i> Load Demo Data
+          </button>
+          <button class="reset-data">
+            <i class="fa-solid fa-trash-can"></i> Reset Data
+          </button>
+          <!-- <button class="save-data">
+            <i class="fa-solid fa-download"></i> Save Draft
+          </button>
+          <button class="load-data">
+            <i class="fa-solid fa-upload"></i> Load Draft
+          </button> -->
+          <button class="download-data btn-primary">
+            <i class="fa-solid fa-file-pdf"></i> Download PDF
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main-Container -->
+  <section class="main-section">
+    <div class="left-part" id="left-part">
+      <!-- Desing Setting -->
+      <div class="setting">
+        <div class="resume-setting">
+          <i class="fa-solid fa-wand-magic-sparkles"></i> Resume Design Settings
+        </div>
+        <div class="desing-template">
+          <label for="templateSelect" class="templateSelect">Select Template Layout</label>
+          <select id="templateSelect" class="form-control">
+            <option value="modern">Modern Minimalist</option>
+            <option value="professional">Professional (Two-Column)</option>
+            <option value="creative">Creative (Colored Header)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Personal details -->
+      <div class="personal-details">
+        <div class="personal-info">
+          <div class="personal-icons">
+            <i class="fa-solid fa-user"></i> Personal Details
+          </div>
+          <i class="fa-solid fa-chevron-down text-muted" id="arrow"></i>
+        </div>
+        <div class="content" id="content">
+          <!-- Profile Picture -->
+          <div class="profile-section">
+            <label>Profile Picture</label>
+            <div class="profile-row">
+              <div class="avatar">
+                <img id="preview" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Profile">
+              </div>
+              <div class="upload-area">
+                <input type="file" id="imageInput" accept="image/*">
+                <button type="button" class="remove-btn" onclick="removeImage()">
+                  Remove Image
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Full Name -->
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" placeholder="Enter Full Name" id="name">
+          </div>
+
+          <!-- Job Title -->
+          <div class="form-group">
+            <label>Job Title / Designation</label>
+            <input type="text" placeholder="Enter Job Title" id="job">
+          </div>
+
+          <!-- Email & Phone -->
+          <div class="row">
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" placeholder="Enter Email" id="email">
+            </div>
+
+            <div class="form-group">
+              <label>Phone Number</label>
+              <input type="text" placeholder="Enter Phone Number" id="number">
+            </div>
+          </div>
+
+          <!-- Location & Linkedin -->
+          <div class="row">
+            <div class="form-group">
+              <label>Location / City</label>
+              <input type="text" placeholder="Enter Location" id="location">
+            </div>
+
+            <div class="form-group">
+              <label>Website / LinkedIn Link</label>
+              <input type="text" placeholder="Enter LinkedIn URL" id="linkedin">
+            </div>
+          </div>
+
+          <!-- Summary -->
+          <div class="form-group">
+            <label>Professional Summary</label>
+            <textarea placeholder="Write your professional summary here..." id="pSummary"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- Work Experience -->
+      <div class="personal-details">
+        <div class="personal-info">
+          <div class="personal-icons">
+            <i class="fa-solid fa-briefcase"></i> Work Experience
+          </div>
+          <i class="fa-solid fa-chevron-down text-muted" id="arrow"></i>
+        </div>
+        <div class="content" id="content">
+          <button class="add-btn" id="addExperience">
+            + Add Experience Block
+          </button>
+          <div id="experienceContainer"></div>
+        </div>
+      </div>
+
+      <!-- Education Experience -->
+      <div class="personal-details">
+        <div class="personal-info">
+          <div class="personal-icons">
+            <i class="fa-solid fa-graduation-cap"></i> Education
+          </div>
+          <i class="fa-solid fa-chevron-down text-muted" id="arrow"></i>
+        </div>
+        <div class="content" id="content">
+          <button class="add-btn1" id="addEducation">
+            + Add Experience Block
+          </button>
+          <div id="educationContainer"></div>
+        </div>
+      </div>
+
+      <!-- Projects Experience -->
+      <div class="personal-details">
+        <div class="personal-info">
+          <div class="personal-icons">
+            <i class="fa-solid fa-diagram-project"></i> Projects
+          </div>
+          <i class="fa-solid fa-chevron-down text-muted" id="arrow"></i>
+        </div>
+        <div class="content" id="content">
+          <button class="add-btn1" id="addProject">
+            + Add Experience Block
+          </button>
+          <div id="projectContainer"></div>
+        </div>
+      </div>
+
+      <!-- Skill & Languages Experience -->
+      <div class="personal-details">
+        <div class="personal-info">
+          <div class="personal-icons">
+            <i class="fa-solid fa-gears"></i> Skills & Languages
+          </div>
+          <i class="fa-solid fa-chevron-down text-muted" id="arrow"></i>
+        </div>
+        <div id="skillsForm" class="skillform">
+          <div class="form-group">
+            <label for="pSkills">Skills (comma-separated list)</label>
+            <input type="text" id="pSkills" class="form-control" placeholder="HTML, CSS, JavaScript, React, SQL, Git"
+              oninput="renderResume()">
+          </div>
+          <div class="form-group">
+            <label for="pLanguages">Languages (comma-separated list)</label>
+            <input type="text" id="pLanguages" class="form-control" placeholder="English, Spanish, French"
+              oninput="renderResume()">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="right-part" id="right-part">
+      <div class="resume-scaler-outer">
+        <div class="resume-container-wrapper" id="resumeWrapper">
+          <div id="resumePreview"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom-buttons -->
+  <section class="footer">
+    <div class="mobile-tabs">
+      <div class="mobile-tab-btn active" id="tabEditor" onclick="switchMobileTab('editor')">
+        <i class="fa-solid fa-pen-to-square"></i> <br> Form Fill
+      </div>
+      <div class="mobile-tab-btn" id="tabPreview" onclick="switchMobileTab('preview')">
+        <i class="fa-solid fa-eye"></i> <br> Live Preview
+      </div>
+    </div>
+  </section>
+  <script src="script.js"></script>
+</body>
+
+</html>
