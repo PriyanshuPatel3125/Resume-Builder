@@ -134,7 +134,7 @@ function addExperienceField(data = {}) {
 
         <label>Responsibilities & Accomplishments</label>
 
-        <textarea placeholder="Describe your key milestones, impact and duties..." id = "jDescription" class="jDescription" oninput="renderResume()"></textarea>
+        <textarea placeholder="Describe your key milestones, impact and duties..." id ="jDescription" class="jDescription" oninput="renderResume()">${data.descExper || ''}}</textarea>
       `;
   list.appendChild(div);
   let render = renderResume();
@@ -159,21 +159,21 @@ function addEducationField(data = {}) {
         </div>
 
         <label>School / Collage / University</label>
-        <input type="text" placeholder="e.g. Stanford University" id = "scu" class="scu" oninput="renderResume()">
+        <input type="text" placeholder="e.g. Stanford University" id = "scu" class="scu" value="${data.school || ''}" oninput="renderResume()">
 
         <label>Degree / Certificate Course</label>
-        <input type="text" placeholder="e.g. B.S. in Computer Science" id = "course" class="course" oninput="renderResume()">
+        <input type="text" placeholder="e.g. B.S. in Computer Science" id = "course" class="course" value="${data.degree || ''}" oninput="renderResume()">
 
         <div class="row">
 
             <div>
                 <label>Graduation Year</label>
-                <input type="text" placeholder="2021" id = "gYear" class="gYear" oninput="renderResume()">
+                <input type="text" placeholder="2021" id = "gYear" class="gYear" value="${data.year || ''}" oninput="renderResume()">
             </div>
 
             <div>
                 <label>Grade / GPA (Optional)</label>
-                <input type="text" placeholder="3.8 / 4.0" id = "GPA" class="GPA" oninput="renderResume()">
+                <input type="text" placeholder="3.8 / 4.0" id = "GPA" class="GPA" value="${data.grade || ''}" oninput="renderResume()">
             </div>
         </div>
       `;
@@ -200,23 +200,23 @@ function addProjectField(data = {}) {
         </div>
 
         <label>Project Title</label>
-        <input type="text" placeholder="e.g. SwiftStore E-Commerce" class="E-commerce" oninput="renderResume()">
+        <input type="text" placeholder="e.g. SwiftStore E-Commerce" class="E-commerce" value="${data.title || ''}" oninput="renderResume()">
 
         <div class="row">
 
             <div>
                 <label>GitHub / Code URL (Optional)</label>
-                <input type="text" placeholder="github.com/username/project" id = "github" class="github" oninput="renderResume()">
+                <input type="text" placeholder="github.com/username/project" id = "github" class="github" value="${data.link || ''}" oninput="renderResume()">
             </div>
 
             <div>
                 <label>Live Demo URL (Optional)</label>
-                <input type="text" placeholder="e.g. swiftstore-demo.vercel.app" id = "demo" class="demo" oninput="renderResume()">
+                <input type="text" placeholder="e.g. swiftstore-demo.vercel.app" id = "demo" class="demo"  value ="${data.demo || ''}"oninput="renderResume()">
             </div>
 
         </div>
         <label>Project Description</label>
-        <textarea placeholder="Details of the stack used, problems solved and outcomes..." id = "pDescription" class="pDescription" oninput="renderResume()"></textarea>
+        <textarea placeholder="Details of the stack used, problems solved and outcomes..." id = "pDescription" class="pDescription" oninput="renderResume()">${data.desc || ''}</textarea>
       `;
   list.appendChild(div);
   renderResume();
@@ -272,7 +272,7 @@ function renderResume() {
       role: item.querySelector('.Role').value,
       start: item.querySelector('.jDate').value,
       end: item.querySelector('.eDate').value,
-      desc: item.querySelector('.jDescription').value
+      descExper: item.querySelector('.jDescription').value
     });
   });
 
@@ -336,7 +336,7 @@ function renderResume() {
             <div><span class="p-item-title">${exp.company || 'Company Name'}</span> - <span class="p-item-subtitle">${exp.role || 'Job Role'}</span></div>
             <div class="p-item-date">${exp.start || 'Start'} To ${exp.end || 'End'}</div>
           </div>
-          <div class="p-item-desc">${exp.desc || 'Responsibilities...'}</div>
+          <div class="p-item-desc">${exp.descExper || 'Responsibilities...'}</div>
         </div>`).join('')}
     </div>`;
 
@@ -696,6 +696,97 @@ function downloadResumePDF() {
 }
 document.querySelector('.download-data').addEventListener('click', () => {
   downloadResumePDF();
+})
+
+// FUNCTION TO INSTANTLY LOAD HIGH QUALITY ENGLISH DEMO DATA
+function loadMockData() {
+
+  // Set core personal info
+  document.getElementById('name').value = "Austin Mitchell";
+  document.getElementById('job').value = "Senior Full-Stack Developer";
+  document.getElementById('email').value = "austin.mitchell@example.com";
+  document.getElementById('number').value = "+1 (555) 432-8765";
+  document.getElementById('location').value = "San Francisco, CA";
+  document.getElementById('linkedin').value = "linkedin.com/in/austin-mitchell";
+  document.getElementById('pSummary').value = "A passionate Software Engineer with over 5 years of experience building secure, highly-scalable cloud architectures and rich responsive user experiences. Specializing in Node.js, React, and serverless engineering.";
+
+  // Clear existing lists first
+  document.getElementById('experienceContainer').innerHTML = "";
+  document.getElementById('educationContainer').innerHTML = "";
+  document.getElementById('projectContainer').innerHTML = "";
+
+  // Load mock experiences
+  addExperienceField({
+    company: "Stripe",
+    role: "Senior Software Engineer",
+    start: "July 2023",
+    end: "Present",
+    descExper: "Designed and implemented robust RESTful APIs supporting millions of transactions daily. Restructured microservice modules leading to a 45% increase in throughput and reduced overall page latency by 200ms."
+  });
+
+  addExperienceField({
+    company: "Webflow Labs",
+    role: "Associate Frontend Developer",
+    start: "Jan 2021",
+    end: "June 2023",
+    descExper: "Engineered performant React interfaces and highly customizable visual components. Optimized web application performance ensuring complete accessibility compliance (WCAG 2.1 AA standard)."
+  });
+
+  // Load mock educations
+  addEducationField({
+    school: "Stanford University",
+    degree: "M.S. in Computer Science",
+    year: "2019 - 2021",
+    grade: "3.9 GPA"
+  });
+
+  addEducationField({
+    school: "University of California, Berkeley",
+    degree: "B.S. in Computer Science",
+    year: "2015 - 2019",
+    grade: "3.8 GPA"
+  });
+
+  // Load mock projects (Includes code & live demo URLs)
+  addProjectField({
+    title: "SwiftStore Serverless Platform",
+    link: "github.com/austin/swiftstore",
+    demo: "swiftstore-platform.vercel.app",
+    desc: "Built a fully-featured cloud platform utilizing AWS Lambda, DynamoDB, and Next.js, allowing swift inventory updates, complex coupon calculations, and real-time transaction telemetry."
+  });
+
+  // Load skills
+  document.getElementById('pSkills').value = "React, Next.js, Node.js, Express, TypeScript, Python, PostgreSQL, AWS, Docker, Kubernetes, GraphQL, System Design";
+  document.getElementById('pLanguages').value = "English (Native), Spanish (Conversational)";
+
+  renderResume();
+}
+
+document.querySelector('.demo-data').addEventListener('click', () => {
+  loadMockData();
+})
+
+// Reset/Clear everything to starting state
+function clearAllData() {
+  document.getElementById('name').value = "";
+  document.getElementById('job').value = "";
+  document.getElementById('email').value = "";
+  document.getElementById('number').value = "";
+  document.getElementById('location').value = "";
+  document.getElementById('linkedin').value = "";
+  document.getElementById('pSummary').value = "";
+  document.getElementById('pSkills').value = "";
+  document.getElementById('pLanguages').value = "";
+
+  document.getElementById('experienceContainer').innerText = " ";
+  document.getElementById('educationContainer').innerHTML = " ";
+  document.getElementById('projectContainer').innerHTML = " ";
+
+  renderResume();
+}
+
+document.querySelector('.reset-data').addEventListener('click', () => {
+  clearAllData();
 })
 
 // Initialize application with a clean start on window load
